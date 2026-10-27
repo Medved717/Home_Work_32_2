@@ -1,0 +1,18 @@
+[
+    {"model": "users.user", "pk": 1, "fields": {"password": "pbkdf2_sha256$600000$dummy$dummy=", "last_login": null, "email": "student1@example.com", "phone": "+79990000001", "city": "Санкт-Петербург", "avatar": ""}},
+    {"model": "users.user", "pk": 2, "fields": {"password": "pbkdf2_sha256$600000$dummy$dummy=", "last_login": null, "email": "student2@example.com", "phone": "+79990000002", "city": "Москва", "avatar": ""}},
+    {"model": "users.user", "pk": 3, "fields": {"password": "pbkdf2_sha256$600000$dummy$dummy=", "last_login": null, "email": "student3@example.com", "phone": "+79990000003", "city": "Санкт-Петербург", "avatar": ""}},
+    {"model": "users.user", "pk": 4, "fields": {"password": "pbkdf2_sha256$600000$dummy$dummy=", "last_login": null, "email": "student4@example.com", "phone": "+79990000004", "city": "Москва", "avatar": ""}},
+    {"model": "users.user", "pk": 5, "fields": {"password": "pbkdf2_sha256$600000$dummy$dummy=", "last_login": null, "email": "student5@example.com", "phone": "+79990000005", "city": "Санкт-Петербург", "avatar": ""}},
+    {"model": "users.user", "pk": 6, "fields": {"password": "pbkdf2_sha256$600000$dummy$dummy=", "last_login": null, "email": "student6@example.com", "phone": "+79990000006", "city": "Москва", "avatar": ""}},
+    {"model": "users.user", "pk": 7, "fields": {"password": "pbkdf2_sha256$600000$dummy$dummy=", "last_login": null, "email": "student7@example.com", "phone": "+79990000007", "city": "Санкт-Петербург", "avatar": ""}},
+    {"model": "users.user", "pk": 8, "fields": {"password": "pbkdf2_sha256$600000$dummy$dummy=", "last_login": null, "email": "student8@example.com", "phone": "+79990000008", "city": "Москва", "avatar": ""}},
+    {"model": "users.user", "pk": 9, "fields": {"password": "pbkdf2_sha256$600000$dummy$dummy=", "last_login": null, "email": "student9@example.com", "phone": "+79990000009", "city": "Санкт-Петербург", "avatar": ""}},
+    {"model": "users.user", "pk": 10, "fields": {"password": "pbkdf2_sha256$600000$dummy$dummy=", "last_login": null, "email": "student10@example.com", "phone": "+79990000010", "city": "Москва", "avatar": ""}},
+    {"model": "users.user", "pk": 11, "fields": {"password": "pbkdf2_sha256$600000$dummy$dummy=", "last_login": null, "email": "student11@example.com", "phone": "+79990000011", "city": "Санкт-Петербург", "avatar": ""}},
+    {"model": "users.user", "pk": 12, "fields": {"password": "pbkdf2_sha256$600000$dummy$dummy=", "last_login": null, "email": "student12@example.com", "phone": "+79990000012", "city": "Москва", "avatar": ""}},
+    {"model": "users.user", "pk": 13, "fields": {"password": "pbkdf2_sha256$600000$dummy$dummy=", "last_login": null, "email": "student13@example.com", "phone": "+79990000013", "city": "Санкт-Петербург", "avatar": ""}},
+    {"model": "users.user", "pk": 14, "fields": {"password": "pbkdf2_sha256$600000$dummy$dummy=", "last_login": null, "email": "student14@example.com", "phone": "+79990000014", "city": "Москва", "avatar": ""}},
+    {"model": "users.user", "pk": 15, "fields": {"password": "pbkdf2_sha256$600000$dummy$dummy=", "last_login": null, "email": "student15@example.com", "phone": "+79990000015", "city": "Санкт-Петербург", "avatar": ""}},
+    {"model": "users.user", "pk": 16, "fields": {"password": "pbkdf2_sha256$600000$dummy$dummy=", "last_login": null, "email": "student16@example.com", "phone": "+79990000016", "city": "Москва", "avatar": ""}}
+]

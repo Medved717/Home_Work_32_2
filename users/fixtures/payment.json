@@ -1,0 +1,18 @@
+[
+    {"model": "users.payment", "pk": 1, "fields": {"user": 1, "pay_date": "2026-10-18", "paid_course": null, "paid_lesson": 2, "payment_amount": 1000, "payment_method": "NO"}},
+    {"model": "users.payment", "pk": 2, "fields": {"user": 2, "pay_date": "2026-10-17", "paid_course": 3, "paid_lesson": null, "payment_amount": 2000, "payment_method": "CA"}},
+    {"model": "users.payment", "pk": 3, "fields": {"user": 3, "pay_date": "2026-10-16", "paid_course": 4, "paid_lesson": null, "payment_amount": 3000, "payment_method": "NO"}},
+    {"model": "users.payment", "pk": 4, "fields": {"user": 4, "pay_date": "2026-10-15", "paid_course": null, "paid_lesson": 1, "payment_amount": 4000, "payment_method": "CA"}},
+    {"model": "users.payment", "pk": 5, "fields": {"user": 5, "pay_date": "2026-10-14", "paid_course": 2, "paid_lesson": null, "payment_amount": 5000, "payment_method": "NO"}},
+    {"model": "users.payment", "pk": 6, "fields": {"user": 6, "pay_date": "2026-10-13", "paid_course": 3, "paid_lesson": null, "payment_amount": 6000, "payment_method": "CA"}},
+    {"model": "users.payment", "pk": 7, "fields": {"user": 7, "pay_date": "2026-10-12", "paid_course": 4, "paid_lesson": null, "payment_amount": 7000, "payment_method": "NO"}},
+    {"model": "users.payment", "pk": 8, "fields": {"user": 8, "pay_date": "2026-10-11", "paid_course": 1, "paid_lesson": null, "payment_amount": 8000, "payment_method": "CA"}},
+    {"model": "users.payment", "pk": 9, "fields": {"user": 9, "pay_date": "2026-10-10", "paid_course": 2, "paid_lesson": null, "payment_amount": 9000, "payment_method": "NO"}},
+    {"model": "users.payment", "pk": 10, "fields": {"user": 10, "pay_date": "2026-10-09", "paid_course": 3, "paid_lesson": null, "payment_amount": 10000, "payment_method": "CA"}},
+    {"model": "users.payment", "pk": 11, "fields": {"user": 11, "pay_date": "2026-10-08", "paid_course": null, "paid_lesson": 4, "payment_amount": 11000, "payment_method": "NO"}},
+    {"model": "users.payment", "pk": 12, "fields": {"user": 12, "pay_date": "2026-10-07", "paid_course": 1, "paid_lesson": null, "payment_amount": 12000, "payment_method": "CA"}},
+    {"model": "users.payment", "pk": 13, "fields": {"user": 13, "pay_date": "2026-10-06", "paid_course": 2, "paid_lesson": null, "payment_amount": 13000, "payment_method": "NO"}},
+    {"model": "users.payment", "pk": 14, "fields": {"user": 14, "pay_date": "2026-10-05", "paid_course": null, "paid_lesson": 3, "payment_amount": 14000, "payment_method": "CA"}},
+    {"model": "users.payment", "pk": 15, "fields": {"user": 15, "pay_date": "2026-10-04", "paid_course": null, "paid_lesson": 4, "payment_amount": 15000, "payment_method": "NO"}},
+    {"model": "users.payment", "pk": 16, "fields": {"user": 16, "pay_date": "2026-10-03", "paid_course": 1, "paid_lesson": null, "payment_amount": 16000, "payment_method": "CA"}}
+]

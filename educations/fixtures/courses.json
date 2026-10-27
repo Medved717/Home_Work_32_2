@@ -1,0 +1,38 @@
+[
+    {
+        "model": "educations.course",
+        "pk": 1,
+        "fields": {
+            "title": "Курс по Django #1",
+            "preview": "",
+            "description": "Это описание для крутого курса номер 1."
+        }
+    },
+    {
+        "model": "educations.course",
+        "pk": 2,
+        "fields": {
+            "title": "Курс по Django #2",
+            "preview": "",
+            "description": "Это описание для крутого курса номер 2."
+        }
+    },
+    {
+        "model": "educations.course",
+        "pk": 3,
+        "fields": {
+            "title": "Курс по Django #3",
+            "preview": "",
+            "description": "Это описание для крутого курса номер 3."
+        }
+    },
+    {
+        "model": "educations.course",
+        "pk": 4,
+        "fields": {
+            "title": "Курс по Django #4",
+            "preview": "",
+            "description": "Это описание для крутого курса номер 4."
+        }
+    }
+]
