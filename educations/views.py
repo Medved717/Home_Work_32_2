@@ -1,3 +1,4 @@
+from drf_spectacular.utils import extend_schema_view, extend_schema
 from rest_framework.generics import (CreateAPIView, DestroyAPIView,
                                      ListAPIView, RetrieveAPIView,
                                      UpdateAPIView, get_object_or_404)
@@ -12,6 +13,24 @@ from educations.serializers import CourseSerializer, LessonSerializer
 from users.permissions import IsModer, IsOwner
 
 
+@extend_schema(tags=["Course"])
+@extend_schema_view(
+    list=extend_schema(
+            summary="Получение списка курсов.",
+        ),
+    update=extend_schema(
+        summary="Изменение данных курса.",
+    ),
+    partial_update=extend_schema(
+        summary="Частичное изменение данных курса.",
+    ),
+    create=extend_schema(
+            summary="Создание нового курса",
+        ),
+    destroy=extend_schema(
+            summary="Удаление курса",
+        ),
+)
 class CourseViewSet(ModelViewSet):
     queryset = Course.objects.all()
     serializer_class = CourseSerializer
@@ -20,6 +39,8 @@ class CourseViewSet(ModelViewSet):
     def get_permissions(self):
         if self.action == 'create':
             self.permission_classes = (IsAdminUser,)
+        elif self.action == 'partial_update':
+            self.permission_classes = (IsModer | IsAdminUser,)
         elif self.action == 'update':
             self.permission_classes = (IsModer | IsAdminUser,)
         elif self.action == 'retrieve':
@@ -31,12 +52,16 @@ class CourseViewSet(ModelViewSet):
         return super().get_permissions()
 
 
+@extend_schema(tags=["Lesson"])
+@extend_schema_view(list=extend_schema(summary="Получение списка уроков."))
 class LessonListAPIView(ListAPIView):
     queryset = Lesson.objects.all()
     serializer_class = LessonSerializer
     pagination_class = LessonPaginations
 
 
+@extend_schema(tags=["Lesson"])
+@extend_schema_view(create=extend_schema(summary="Создание урока."))
 class LessonCreateAPIView(CreateAPIView):
     queryset = Lesson.objects.all()
     serializer_class = LessonSerializer
@@ -48,26 +73,33 @@ class LessonCreateAPIView(CreateAPIView):
         lesson.save()
 
 
+@extend_schema(tags=["Lesson"])
+@extend_schema_view(retrieve=extend_schema(summary="Просмотр конкретного урока."))
 class LessonRetrieveAPIView(RetrieveAPIView):
     queryset = Lesson.objects.all()
     serializer_class = LessonSerializer
     permission_classes = (IsModer | IsAdminUser | IsOwner,)
 
 
+@extend_schema(tags=["Lesson"])
+@extend_schema_view(update=extend_schema(summary="Изменение урока."))
 class LessonUpdateAPIView(UpdateAPIView):
     queryset = Lesson.objects.all()
     serializer_class = LessonSerializer
     permission_classes = (IsModer | IsAdminUser | IsOwner,)
 
 
+@extend_schema(tags=["Lesson"])
+@extend_schema_view(destroy=extend_schema(summary="Удаление урока."))
 class LessonDestroyAPIViews(DestroyAPIView):
     queryset = Lesson.objects.all()
     permission_classes = (IsAdminUser | IsOwner,)
     serializer_class = LessonSerializer
 
 
+@extend_schema(tags=["Subscription"])
+@extend_schema_view(post=extend_schema(summary="Создание и удаление подписки"))
 class SubscriptionsAPIView(APIView):
-
     def post(self, *args, **kwargs):
         user = self.request.user
         course_id = self.request.data.get('course_id')
