@@ -64,7 +64,7 @@ class CourseViewSet(ModelViewSet):
 
 
 @extend_schema(tags=["Lesson"])
-@extend_schema_view(list=extend_schema(summary="Получение списка уроков."))
+@extend_schema_view(get=extend_schema(summary="Получение списка уроков."))
 class LessonListAPIView(ListAPIView):
     queryset = Lesson.objects.all()
     serializer_class = LessonSerializer
@@ -72,7 +72,7 @@ class LessonListAPIView(ListAPIView):
 
 
 @extend_schema(tags=["Lesson"])
-@extend_schema_view(create=extend_schema(summary="Создание урока."))
+@extend_schema_view(post=extend_schema(summary="Создание урока."))
 class LessonCreateAPIView(CreateAPIView):
     queryset = Lesson.objects.all()
     serializer_class = LessonSerializer
@@ -85,7 +85,7 @@ class LessonCreateAPIView(CreateAPIView):
 
 
 @extend_schema(tags=["Lesson"])
-@extend_schema_view(retrieve=extend_schema(summary="Просмотр конкретного урока."))
+@extend_schema_view(get=extend_schema(summary="Просмотр конкретного урока."))
 class LessonRetrieveAPIView(RetrieveAPIView):
     queryset = Lesson.objects.all()
     serializer_class = LessonSerializer
@@ -93,7 +93,8 @@ class LessonRetrieveAPIView(RetrieveAPIView):
 
 
 @extend_schema(tags=["Lesson"])
-@extend_schema_view(update=extend_schema(summary="Изменение урока."))
+@extend_schema_view(put=extend_schema(summary="Изменение урока."),
+                    patch=extend_schema(summary="Частичное изменение урока."))
 class LessonUpdateAPIView(UpdateAPIView):
     queryset = Lesson.objects.all()
     serializer_class = LessonSerializer
@@ -101,7 +102,7 @@ class LessonUpdateAPIView(UpdateAPIView):
 
 
 @extend_schema(tags=["Lesson"])
-@extend_schema_view(destroy=extend_schema(summary="Удаление урока."))
+@extend_schema_view(delete=extend_schema(summary="Удаление урока."))
 class LessonDestroyAPIViews(DestroyAPIView):
     queryset = Lesson.objects.all()
     permission_classes = (IsAdminUser | IsOwner,)

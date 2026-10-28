@@ -118,3 +118,5 @@ REST_FRAMEWORK = {
     ],
     'DEFAULT_SCHEMA_CLASS': 'drf_spectacular.openapi.AutoSchema',
 }
+
+STRIPE_API_KEY = os.getenv('STRIPE_API_KEY')

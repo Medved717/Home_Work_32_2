@@ -73,3 +73,38 @@ class Payment(models.Model):
         return f'Оплата от: {self.user} на сумму {self.payment_amount}'
 
 
+class Pay(models.Model):
+    amount = models.PositiveIntegerField(
+        verbose_name='Сумма',
+        help_text='Введите сумму платежа.'
+    )
+    session_id = models.CharField(
+        max_length=255,
+        verbose_name="ID сессии",
+        help_text="Введите ID сессии.",
+        blank=True,
+        null=True
+    )
+    link_on_pay = models.URLField(
+        max_length=500,
+        verbose_name="Ссылка на оплату",
+        help_text="Внесите ссылку на оплату",
+        blank=True,
+        null=True
+    )
+    user = models.ForeignKey(
+        User,
+        on_delete=models.SET_NULL,
+        verbose_name="Пользователь",
+        help_text="Укажите пользователя",
+        blank=True,
+        null=True
+    )
+
+    class Meta:
+        verbose_name = 'Оплата'
+        verbose_name_plural = 'Оплаты'
+
+    def __str__(self):
+        return self.amount
+
