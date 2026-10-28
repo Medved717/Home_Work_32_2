@@ -1,4 +1,5 @@
 from django.core.serializers import serialize
+from rest_framework import serializers
 from rest_framework.fields import SerializerMethodField
 from rest_framework.serializers import ModelSerializer
 
@@ -8,28 +9,38 @@ from educations.validators import InvalidLinkValidator
 
 class LessonSerializer(ModelSerializer):
 
-
     class Meta:
         model = Lesson
         fields = "__all__"
-        validators = [InvalidLinkValidator('link_on_video')]
+        validators = [InvalidLinkValidator("link_on_video")]
 
 
 class CourseSerializer(ModelSerializer):
     count_lesson = SerializerMethodField()
-    lessons_list = LessonSerializer(source='lessons', read_only=True, many=True)
+    lessons_list = LessonSerializer(source="lessons", read_only=True, many=True)
     subscriptions = SerializerMethodField(read_only=True)
 
     def get_count_lesson(self, instance):
         return instance.lessons.count()
 
     def get_subscriptions(self, instance):
-        user = self.context.get('request').user
+        user = self.context.get("request").user
         if not user.is_authenticated:
             return False
         return instance.subscriptions_user.filter(user=user).exists()
 
-
     class Meta:
         model = Course
         fields = "__all__"
+
+
+class SubscriptionRequestSerializer(serializers.Serializer):
+    course_id = serializers.IntegerField(
+        help_text="Данные id курса, на который осуществляется подписка."
+    )
+
+
+class SubscriptionResponseSerializer(serializers.Serializer):
+    message = serializers.CharField(
+        help_text="Сообщение, направляемое при подписке или отписке от курса."
+    )

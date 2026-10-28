@@ -1,7 +1,13 @@
 from drf_spectacular.utils import extend_schema_view, extend_schema
-from rest_framework.generics import (CreateAPIView, DestroyAPIView,
-                                     ListAPIView, RetrieveAPIView,
-                                     UpdateAPIView, get_object_or_404)
+from rest_framework import status
+from rest_framework.generics import (
+    CreateAPIView,
+    DestroyAPIView,
+    ListAPIView,
+    RetrieveAPIView,
+    UpdateAPIView,
+    get_object_or_404,
+)
 from rest_framework.permissions import IsAdminUser, IsAuthenticated
 from rest_framework.response import Response
 from rest_framework.views import APIView
@@ -9,15 +15,20 @@ from rest_framework.viewsets import ModelViewSet
 
 from educations.models import Course, Lesson, Subscriptions
 from educations.paginators import CoursePaginations, LessonPaginations
-from educations.serializers import CourseSerializer, LessonSerializer
+from educations.serializers import (
+    CourseSerializer,
+    LessonSerializer,
+    SubscriptionRequestSerializer,
+    SubscriptionResponseSerializer,
+)
 from users.permissions import IsModer, IsOwner
 
 
 @extend_schema(tags=["Course"])
 @extend_schema_view(
     list=extend_schema(
-            summary="Получение списка курсов.",
-        ),
+        summary="Получение списка курсов.",
+    ),
     update=extend_schema(
         summary="Изменение данных курса.",
     ),
@@ -25,11 +36,11 @@ from users.permissions import IsModer, IsOwner
         summary="Частичное изменение данных курса.",
     ),
     create=extend_schema(
-            summary="Создание нового курса",
-        ),
+        summary="Создание нового курса",
+    ),
     destroy=extend_schema(
-            summary="Удаление курса",
-        ),
+        summary="Удаление курса",
+    ),
 )
 class CourseViewSet(ModelViewSet):
     queryset = Course.objects.all()
@@ -37,17 +48,17 @@ class CourseViewSet(ModelViewSet):
     pagination_class = CoursePaginations
 
     def get_permissions(self):
-        if self.action == 'create':
+        if self.action == "create":
             self.permission_classes = (IsAdminUser,)
-        elif self.action == 'partial_update':
+        elif self.action == "partial_update":
             self.permission_classes = (IsModer | IsAdminUser,)
-        elif self.action == 'update':
+        elif self.action == "update":
             self.permission_classes = (IsModer | IsAdminUser,)
-        elif self.action == 'retrieve':
+        elif self.action == "retrieve":
             self.permission_classes = (IsModer | IsAdminUser,)
-        elif self.action == 'list':
+        elif self.action == "list":
             self.permission_classes = (IsModer | IsAdminUser,)
-        elif self.action == 'destroy':
+        elif self.action == "destroy":
             self.permission_classes = (IsAdminUser,)
         return super().get_permissions()
 
@@ -98,20 +109,25 @@ class LessonDestroyAPIViews(DestroyAPIView):
 
 
 @extend_schema(tags=["Subscription"])
-@extend_schema_view(post=extend_schema(summary="Создание и удаление подписки"))
+@extend_schema_view(
+    post=extend_schema(
+        summary="Создание и удаление подписки",
+        request=SubscriptionRequestSerializer,
+        responses={status.HTTP_200_OK: SubscriptionResponseSerializer},
+    )
+)
 class SubscriptionsAPIView(APIView):
     def post(self, *args, **kwargs):
         user = self.request.user
-        course_id = self.request.data.get('course_id')
+        course_id = self.request.data.get("course_id")
         course = get_object_or_404(Course, pk=course_id)
         subscriptions = Subscriptions.objects.filter(user=user, course=course)
 
         if subscriptions.exists():
             subscriptions.delete()
-            message = 'Ваша подписка удалена'
+            message = "Ваша подписка удалена"
 
         else:
             Subscriptions.objects.create(user=user, course=course)
-            message = 'Ваша подписка активирована'
-        return Response({'message': message})
-
+            message = "Ваша подписка активирована"
+        return Response({"message": message})
